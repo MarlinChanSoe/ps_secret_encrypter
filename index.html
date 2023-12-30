@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.jpg" />
+    <link rel="stylesheet" href="script.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratical Society Encrypter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main_wrapper">
+    <h1>Pratical Society Encrypter</h1>
+    <label for="inputString">Enter The Code or Text:</label>
+    <input type="text" id="inputString" placeholder="Type your string here">
+    <br>
+    <button onclick="convertToAscii()">Convert to Modified ASCII</button>
+    <button onclick="convertToOriginal()">Convert to Original String</button>
+    <br>
+    <p id="result"></p>
+</div>
+
+    <script>
+        function convertToAscii() {
+            var inputString = document.getElementById("inputString").value;
+            var result = "";
+
+            for (var i = 0; i < inputString.length; i++) {
+                var originalAscii = inputString.charCodeAt(i);
+                var modifiedAscii = originalAscii + 3;
+                result += modifiedAscii + " ";
+            }
+
+            document.getElementById("result").innerText = "Encrypted Code: " + result.trim();
+        }
+
+        function convertToOriginal() {
+            var inputValues = document.getElementById("inputString").value.split(" ");
+            var result = "";
+
+            for (var i = 0; i < inputValues.length; i++) {
+                var modifiedAscii = parseInt(inputValues[i]);
+                var originalAscii = modifiedAscii - 3;
+                result += String.fromCharCode(originalAscii);
+            }
+
+            document.getElementById("result").innerText = "Decrypted Text: " + result;
+        }
+    </script>
+</body>
+</html>
